@@ -6,6 +6,8 @@ on:
       - "*"
   push:
     branches:
+      - "develop"
+      - "main"
       - "master"
   schedule:
     # Note that cronjobs run on master/main by default
@@ -21,7 +23,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     strategy:
       fail-fast: false
       matrix:

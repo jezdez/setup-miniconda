@@ -6,6 +6,8 @@ on:
       - "*"
   push:
     branches:
+      - "develop"
+      - "main"
       - "master"
   schedule:
     # Note that cronjobs run on master/main by default
@@ -32,7 +34,7 @@ jobs:
             activate-environment: c:\ace
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: ./

@@ -25,12 +25,12 @@ of:
   - an `environment.yml`-like file (which can be patched with `python-version`)
     - the patched environment will be cleaned up unless
       `clean-patched-environment-file: false` is given
-  - a [lockfile](#example-7-explicit-specification)
+  - a [lockfile](#example-7-lockfiles)
 
 This action correctly handles activation of environments and offers the
 possibility of automatically activating the `test` environment on all shells.
 
-> **Please** see the **[IMPORTANT](#IMPORTANT)** notes on additional information
+> **Please** see the **[IMPORTANT](#important)** notes on additional information
 > on environment activation.
 
 [bundled]:
@@ -38,7 +38,6 @@ possibility of automatically activating the `test` environment on all shells.
 [miniconda-repo]: https://repo.anaconda.com/miniconda
 [miniforge-releases]: https://github.com/conda-forge/miniforge/releases
 [constructor]: https://github.com/conda/constructor
-[mamba]: https://github.com/mamba-org/mamba
 
 ## Example Overview
 
@@ -52,47 +51,51 @@ possibility of automatically activating the `test` environment on all shells.
 | [Channels](#example-4-conda-options)            | [![Channels Status][ex4-badge]][ex4]                            |
 | [Custom installer](#example-5-custom-installer) | [![Custom Installer Status][ex5-badge]][ex5]                    |
 | [Mamba](#example-6-mamba)                       | [![Mamba Status][ex6-badge]][ex6]                               |
-| [Lockfiles](#example-7-explicit-specification)  | [![Lockfiles Status][ex7-badge]][ex7]                           |
+| [Lockfiles](#example-7-lockfiles)               | [![Lockfiles Status][ex7-badge]][ex7]                           |
 | [Miniforge](#example-10-miniforge)              | [![Miniforge Status][ex10-badge]][ex10]                         |
 | [Caching packages](#caching-packages)           | [![Caching Example Status][caching-badge]][caching]             |
 | [Caching environments](#caching-environments)   | [![Caching Env Example Status][caching-env-badge]][caching-env] |
 
 [ex1]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-1.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-1.yml?query=branch%3Adevelop
 [ex1-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%201:%20Basic%20usage/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%201:%20Basic%20usage/develop
 [ex2]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-2.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-2.yml?query=branch%3Adevelop
 [ex2-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%202:%20Other%20shells/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%202:%20Other%20shells/develop
 [ex3]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-3.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-3.yml?query=branch%3Adevelop
 [ex3-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%203:%20Other%20options/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%203:%20Other%20options/develop
 [ex4]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-4.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-4.yml?query=branch%3Adevelop
 [ex4-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%204:%20Channels/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%204:%20Channels/develop
 [ex5]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-5.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-5.yml?query=branch%3Adevelop
 [ex5-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%205:%20Custom%20installer/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%205:%20Custom%20installer/develop
 [ex6]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-6.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-6.yml?query=branch%3Adevelop
 [ex6-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%206:%20Mamba/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%206:%20Mamba/develop
 [caching]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/caching-example.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/caching-example.yml?query=branch%3Adevelop
 [caching-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Caching%20Example/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Caching%20Example/develop
+[caching-env]:
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/caching-envs-example.yml?query=branch%3Adevelop
+[caching-env-badge]:
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Caching%20Env%20Example/develop
 [ex7]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-7.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-7.yml?query=branch%3Adevelop
 [ex7-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%207:%20Explicit%20Environment%20Specification
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%207:%20Explicit%20Environment%20Specification/develop
 [ex10]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-10.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-10.yml?query=branch%3Adevelop
 [ex10-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%2010:%20Miniforge,%20etc/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%2010:%20Miniforge,%20etc/develop
 
 ## Other Workflows
 
@@ -103,17 +106,17 @@ possibility of automatically activating the `test` environment on all shells.
 | Workflow Status | [![Linting Status][linting-badge]][linting] | [![Catch Invalid Environments Status][ex8-badge]][ex8] | [![Handle Empty Channels Status][ex9-badge]][ex9] |
 
 [linting]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/lint.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/lint.yml?query=branch%3Adevelop
 [linting-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Linting/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Linting/develop
 [ex8]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-8.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-8.yml?query=branch%3Adevelop
 [ex8-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%208:%20Catch%20invalid%20environment%20files/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%208:%20Catch%20invalid%20environment%20files/develop
 [ex9]:
-  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-9.yml?query=branch%3Amaster
+  https://github.com/conda-incubator/setup-miniconda/actions/workflows/example-9.yml?query=branch%3Adevelop
 [ex9-badge]:
-  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%209:%20Empty%20Channels%20in%20file%20dont%20crash%20setup/master
+  https://img.shields.io/github/workflow/status/conda-incubator/setup-miniconda/Example%209:%20Empty%20Channels%20in%20file%20dont%20crash%20setup/develop
 
 ## Environment activation
 
@@ -189,7 +192,7 @@ jobs:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
       - name: Conda info
-        shell: bash -l {0}
+        shell: bash -el {0}
         run: conda info
       - name: Conda list
         shell: pwsh
@@ -213,7 +216,7 @@ jobs:
           miniconda-version: "latest"
           activate-environment: foo
       - name: Bash
-        shell: bash -l {0}
+        shell: bash -el {0}
         run: |
           conda info
           conda list
@@ -237,7 +240,7 @@ jobs:
           conda info
           conda list
       - name: Bash
-        shell: bash -l {0}
+        shell: bash -el {0}
         run: |
           conda info
           conda list
@@ -256,7 +259,7 @@ jobs:
           miniconda-version: "latest"
           activate-environment: foo
       - name: Bash
-        shell: bash -l {0}
+        shell: bash -el {0}
         run: |
           conda info
           conda list
@@ -292,7 +295,7 @@ jobs:
     runs-on: "ubuntu-latest"
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
@@ -324,7 +327,7 @@ jobs:
     runs-on: "ubuntu-latest"
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
@@ -364,7 +367,7 @@ jobs:
     runs-on: "ubuntu-latest"
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
@@ -408,14 +411,14 @@ jobs:
           channel-priority: true
           activate-environment: anaconda-client-env
           environment-file: etc/example-environment.yml
-      - shell: bash -l {0}
+      - shell: bash -el {0}
         run: |
           conda info
           conda list
           conda config --show-sources
           conda config --show
           printenv | sort
-      - shell: bash -l {0}
+      - shell: bash -el {0}
         run: mamba install jupyterlab
 ```
 
@@ -449,7 +452,7 @@ jobs:
     runs-on: "ubuntu-latest"
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
@@ -527,6 +530,35 @@ jobs:
           use-mamba: true
 ```
 
+### Example 11: Alternative Architectures
+
+In addition to the default 64-bit builds of Miniconda, 32-bit versions are
+available for Windows. Note that although some x86 builds are available for
+Linux and MacOS, these are too old (<4.6) to be supported by this action.
+
+```yaml
+jobs:
+  example-11:
+    name:
+      Ex11 (os=${{ matrix.os }} architecture=${{ matrix.architecture }}
+      miniconda-version=${{ matrix.miniconda-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["windows-latest"]
+        architecture: ["x86"]
+        miniconda-version: ["latest"]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          architecture: ${{ matrix.architecture }}
+          miniconda-version: $${{ matrix.miniconda-version }}
+          auto-update-conda: true
+          python-version: "3.8"
+```
+
 ## Caching
 
 ### Caching packages
@@ -564,7 +596,7 @@ jobs:
         with:
           activate-environment: anaconda-client-env
           channel-priority: strict
-          environment-file: etc/example-environment-caching.yml
+          environment-file: etc/example-environment.yml
           use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
 ```
 
@@ -597,7 +629,7 @@ the "Get Date" step below if you use a resolved environment file product of
 ```yaml
 - name: Get Date
   id: get-date
-  run: echo "::set-output name=today::$(/bin/date -u '+%Y%m%d')"
+  run: echo "today=$(/bin/date -u '+%Y%m%d')" >> $GITHUB_OUTPUT
   shell: bash
 
 - name: Cache Conda env
@@ -639,11 +671,11 @@ not exist.
 
 ### Use a default shell
 
-Assuming you are using the bash shell, now adding to `shell: bash -l {0}` to
+Assuming you are using the bash shell, now adding to `shell: bash -el {0}` to
 every single step can be avoided if your workflow uses the same shell for all
 the steps.
 
-By adding a `defaults` section and specifying the `bash -l {0}`, all steps in
+By adding a `defaults` section and specifying the `bash -el {0}`, all steps in
 the job will default to that value.
 
 For other shells, make sure to use the right `shell` parameter as the default
@@ -659,7 +691,7 @@ jobs:
     runs-on: "ubuntu-latest"
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
@@ -674,10 +706,10 @@ jobs:
 ## IMPORTANT
 
 - Bash shells do not use `~/.profile` or `~/.bashrc` so these shells need to be
-  explicitely declared as `shell: bash -l {0}` on steps that need to be properly
-  activated (or use a default shell). This is because bash shells are executed
-  with `bash --noprofile --norc -eo pipefail {0}` thus ignoring updated on bash
-  profile files made by `conda init bash`. See
+  explicitely declared as `shell: bash -el {0}` on steps that need to be
+  properly activated (or use a default shell). This is because bash shells are
+  executed with `bash --noprofile --norc -eo pipefail {0}` thus ignoring updated
+  on bash profile files made by `conda init bash`. See
   [Github Actions Documentation](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#using-a-specific-shell)
   and
   [thread](https://github.community/t5/GitHub-Actions/How-to-share-shell-profile-between-steps-or-how-to-use-nvm-rvm/td-p/33185).
@@ -713,6 +745,14 @@ See the
 for project history, or
 [CONTRIBUTING](https://github.com/conda-incubator/setup-miniconda/blob/master/CONTRIBUTING.md)
 to get started adding features you need.
+
+## Contributors
+
+Thanks to all the contributors that make this awesome project possible!
+
+[![Meet our contributors!](https://contrib.rocks/image?repo=conda-incubator/setup-miniconda)](https://github.com/conda-incubator/setup-miniconda/graphs/contributors)
+
+_Made with [contributors-img](https://contrib.rocks)._
 
 ## License
 

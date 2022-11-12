@@ -6,6 +6,8 @@ on:
       - "*"
   push:
     branches:
+      - "develop"
+      - "main"
       - "master"
   schedule:
     # Note that cronjobs run on master/main by default
@@ -21,7 +23,7 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     strategy:
       fail-fast: false
       matrix:
@@ -48,7 +50,7 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     strategy:
       fail-fast: false
       matrix:
@@ -61,6 +63,12 @@ jobs:
             miniforge-version: 4.9.2-2
             mamba-version: 0.7.6
             python-version: 3.6
+          # should use mamba >= 0.20
+          - os: ubuntu
+            environment-file: etc/example-environment-no-name.yml
+            miniforge-variant: Mambaforge
+            mamba-version: ">=0.20"
+          # should use mamabforge-pypy `latest`
           - os: macos
             environment-file: etc/example-empty-channels-environment.yml
             miniforge-variant: Mambaforge-pypy3
