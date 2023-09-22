@@ -25096,7 +25096,7 @@ function condaBasePath(options) {
     let condaPath = constants.MINICONDA_DIR_PATH;
     if (!options.useBundled) {
         if (constants.IS_MAC) {
-            condaPath = "/Users/runner/miniconda3";
+            condaPath = "/Users/admin/miniconda3";
         }
         else {
             condaPath += "3";
@@ -26402,7 +26402,7 @@ function downloadMiniforge(inputs, options) {
         let fileName;
         let url;
         if (version === "latest") {
-            // e.g. https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+            // https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
             fileName = [tool, osName, `${arch}.${extension}`].join("-");
             url = [constants.MINIFORGE_URL_PREFIX, version, "download", fileName].join("/");
         }

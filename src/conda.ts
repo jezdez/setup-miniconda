@@ -20,7 +20,7 @@ export function condaBasePath(options: types.IDynamicOptions): string {
   let condaPath: string = constants.MINICONDA_DIR_PATH;
   if (!options.useBundled) {
     if (constants.IS_MAC) {
-      condaPath = "/Users/runner/miniconda3";
+      condaPath = "/Users/admin/miniconda3";
     } else {
       condaPath += "3";
     }
