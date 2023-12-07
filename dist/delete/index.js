@@ -25777,16 +25777,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.makeSpec = exports.execute = exports.isBaseEnv = exports.cacheFolder = void 0;
+exports.makeSpec = exports.execute = exports.isBaseEnv = exports.cacheFolder = exports.cacheBase = void 0;
 const os = __importStar(__nccwpck_require__(2037));
 const path = __importStar(__nccwpck_require__(1017));
 const stream = __importStar(__nccwpck_require__(2781));
 const exec = __importStar(__nccwpck_require__(1514));
 const core = __importStar(__nccwpck_require__(2186));
 const constants = __importStar(__nccwpck_require__(9042));
+/** The base directory for the cache folder */
+function cacheBase() {
+    // make sure the action runs in the hosted environment
+    if (process.env["RUNNER_ENVIRONMENT"] === "github-hosted" &&
+        process.env["AGENT_ISSELFHOSTED"] !== "1" &&
+        constants.IS_WINDOWS) {
+        return "D:\\";
+    }
+    else {
+        return os.homedir();
+    }
+}
+exports.cacheBase = cacheBase;
 /** The folder to use as the conda package cache */
 function cacheFolder() {
-    return path.join(os.homedir(), constants.CONDA_CACHE_FOLDER);
+    return path.join(cacheBase(), constants.CONDA_CACHE_FOLDER);
 }
 exports.cacheFolder = cacheFolder;
 /**

@@ -6,9 +6,23 @@ import * as exec from "@actions/exec";
 import * as core from "@actions/core";
 import * as constants from "./constants";
 
+/** The base directory for the cache folder */
+export function cacheBase() {
+  // make sure the action runs in the hosted environment
+  if (
+    process.env["RUNNER_ENVIRONMENT"] === "github-hosted" &&
+    process.env["AGENT_ISSELFHOSTED"] !== "1" &&
+    constants.IS_WINDOWS
+  ) {
+    return "D:\\";
+  } else {
+    return os.homedir();
+  }
+}
+
 /** The folder to use as the conda package cache */
 export function cacheFolder() {
-  return path.join(os.homedir(), constants.CONDA_CACHE_FOLDER);
+  return path.join(cacheBase(), constants.CONDA_CACHE_FOLDER);
 }
 
 /**
